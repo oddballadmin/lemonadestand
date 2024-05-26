@@ -1,0 +1,15 @@
+.Header {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	& > .brand p {
+		font-size: clamp(1.25rem, 1rem + 1vw, 1.85rem);
+	}
+	& > .Profile {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+	}
+}

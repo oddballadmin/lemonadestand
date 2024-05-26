@@ -1,4 +1,4 @@
-# Lemonade Stand
+# Lemonade Stand (Small Works) 
 
 This is a job board application meant to enable young people to pick up local jobs
 
