@@ -1,0 +1,47 @@
+.Navigation {
+	display: flex;
+	position: absolute;
+	width: 7%;
+	height: 50%;
+	background-color: var(--accent-color);
+	justify-content: center;
+	align-items: center;
+	border-top-right-radius: 2rem;
+	border-bottom-right-radius: 2rem;
+	& > ul {
+		display: grid;
+		position: absolute;
+		list-style: none;
+		margin: auto 0;
+		grid-template-columns: repeat(auto, 1fr);
+		gap: 5rem;
+		& > li {
+			text-align: center;
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	.Navigation {
+		top: 25%;
+	}
+}
+
+@media (max-width: 768px) {
+	.Navigation {
+		position: absolute;
+		width: 100vw;
+		height: 50%;
+		border-top-right-radius: 0;
+		border-bottom-left-radius: 2rem;
+		& > ul {
+			position: absolute;
+			text-align: center;
+			top: 1.5rem;
+			gap: 2rem;
+
+			& > li {
+				margin: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+.UserHeadSection {
+	display: flex;
+	flex-flow: row nowrap;
+	& > .authLinks {
+		display: flex;
+		gap: 0.25rem;
+	}
+}

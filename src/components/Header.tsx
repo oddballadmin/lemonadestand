@@ -1,17 +1,19 @@
-import HeaderMenu from "./HeaderMenu";
-import "./styles/Header.css";
+import HeaderMenu from "./utils/HeaderMenu";
+import "./../styles/Header.css";
+import UserHeadSection from "./utils/UserHeadSection";
+
 type HeaderProps = {
 	title: string;
 };
 
 const Header = ({ title }: HeaderProps) => {
 	return (
-		<header className="Header">
+		<header className="Header container">
 			<div className="brand">
 				<p>{title}</p>
 			</div>
 			<div className="Profile">
-				<p>Guest</p>
+				<UserHeadSection isUserLoggedIn={false} />
 				<HeaderMenu />
 			</div>
 		</header>

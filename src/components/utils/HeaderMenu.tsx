@@ -1,6 +1,6 @@
-import "./styles/HeaderMenu.css";
+import "./../../styles/HeaderMenu.css";
 import { FcMenu } from "react-icons/fc";
-import Button from "../Button";
+import Button from "./Button";
 
 const HeaderMenu = () => {
 	return (
