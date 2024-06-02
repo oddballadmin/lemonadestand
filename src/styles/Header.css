@@ -3,9 +3,12 @@
 	flex-flow: row nowrap;
 	justify-content: space-between;
 	align-items: center;
+	padding-block: 1rem !important;
 	flex: 1;
-	& > .brand > p {
+	& > .brand > a {
 		font-size: clamp(1.25rem, 1rem + 1vw, 1.65rem);
+		text-decoration: none;
+		color: var(--color-primary);
 	}
 	& > .Profile {
 		display: flex;

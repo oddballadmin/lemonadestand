@@ -15,11 +15,12 @@ html,
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	--accent-color: rgba(96, 125, 139, 0.95);
+	--border-color: rgba(96, 125, 139);
 }
 body {
-	height: 100dvh;
+	max-height: 100svh;
 	font-weight: 600;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 a {
 	text-underline-offset: 0.5rem;
@@ -51,7 +52,7 @@ p {
 	font-size: clamp(1rem, 0.875rem + 0.5vw, 1.125rem);
 }
 .container {
-	padding: 0 2rem;
+	padding-inline: 2rem;
 }
 
 @media (prefers-color-scheme: light) {

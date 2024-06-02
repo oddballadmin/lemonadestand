@@ -4,11 +4,12 @@ type FormProps = {
 	action: string;
 	method?: string;
 	formId: string;
+	className?: string; // Change 'class' to 'className'
 };
 
-const Form = ({ children, action, method, formId }: FormProps) => {
+const Form = ({ children, action, method, formId, className }: FormProps) => {
 	return (
-		<form method={method} action={action} id={formId}>
+		<form method={method} action={action} id={formId} className={className}> 
 			{children}
 		</form>
 	);

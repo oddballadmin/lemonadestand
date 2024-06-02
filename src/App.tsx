@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Jobs from "./pages/Jobs";
 import Error from "./pages/Error";
+import SignIn from "./pages/SignIn";
+import Register from "./pages/Register";
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -11,6 +13,8 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: "jobs", element: <Jobs /> },
+			{ path: "login", element: <SignIn /> },
+			{ path: "register", element: <Register /> },
 			{ path: "*", element: <Error /> }, // Optional: Catch-all route for 404
 		],
 	},

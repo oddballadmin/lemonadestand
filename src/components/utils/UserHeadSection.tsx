@@ -1,4 +1,6 @@
 import "../../styles/UserHeadSection.css";
+import { NavLink } from "react-router-dom";
+
 interface UserHeadSectionProps {
 	isUserLoggedIn: boolean;
 }
@@ -11,7 +13,8 @@ const UserHeadSection = ({ isUserLoggedIn }: UserHeadSectionProps) => {
 				</div>
 			) : (
 				<div className="authLinks">
-					<a href="#">Sign In</a>/<a href="#">Sign Up</a>
+					<NavLink to="login">Sign In</NavLink>/
+					<NavLink to="register">Sign Up</NavLink>
 				</div>
 			)}
 		</div>
