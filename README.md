@@ -3,19 +3,19 @@
 This is a job board application meant to enable young people to pick up local jobs
 
 ## TODO List
-- [] - Create Application Structure
-- [] - Choose Libraries
+- [x] - Create Application Structure
+- [x] - Choose Libraries
 - [] - Determine Color Scheme
-- [] - Choose Fonts
-- [] - Create Application Structure
-- [] - Determine App layout (Mobile / Desktop)
+- [x] - Choose Fonts
+- [x] - Create Application Structure
+- [x] - Determine App layout (Mobile / Desktop)
 - [] - Load Components with dummy data
-- [] - Create DB for data (mongoDB)
-- [] - Create Backend Server
-- [] - Create Middleware for server
-- [] - Create Routes for API
-- [] - Create Authentication Routes
+- [x] - Create DB for data (mongoDB)
+- [x] - Create Backend Server
+- [x] - Create Middleware for server
+- [x] - Create Routes for API
+- [x] - Create Authentication Routes
 - [] - Connect Auth routes with frontend
-- [] - Connect rest of the backend with the api
+- [] - Connect rest of the frontend with the api
 
  

@@ -6,6 +6,12 @@ import Jobs from "./pages/Jobs";
 import Error from "./pages/Error";
 import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
+import axios from "axios";
+import.meta.env.VITE_NODE_ENV === "development"
+	? (axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL)
+	: (axios.defaults.baseURL = import.meta.env.VITE_PROD_API_BASE_URL);
+axios.defaults.withCredentials = true;
+
 const router = createBrowserRouter([
 	{
 		path: "/",

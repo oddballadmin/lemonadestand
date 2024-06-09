@@ -2,45 +2,128 @@ import React from "react";
 import Form from "./../components/utils/Form";
 import "../styles/Form.css";
 import FormGroup from "./../components/utils/FormGroup";
+import { register } from "../helper/routes";
 const Register = () => {
 	const [formData, setFormData] = React.useState({
-		fname: "",
-		lname: "",
-		bday: "",
-		zip: "",
+		firstName: "",
+		lastName: "",
+		birthdate: "",
+		zipcode: "",
+		phone: "",
 		email: "",
 		password: "",
 		password2: "",
 	});
 	const [formError, setFormError] = React.useState({
-		fnameError: "",
-		lnameError: "",
-		bdayError: "",
-		zipError: "",
+		firstNameError: "",
+		lastNameError: "",
+		birthdateError: "",
+		zipcodeError: "",
+		phoneError: "",
 		emailError: "",
 		passwordError: "",
 		password2Error: "",
 	});
+	const isValidForm = () => {
+		let isValid = true;
+		if (!formData.firstName) {
+			setFormError((prevState) => ({
+				...prevState,
+				firstNameError: "First name is required",
+			}));
+			isValid = false;
+		} else {
+			setFormError((prevState) => ({ ...prevState, firstNameError: "" }));
+		}
+		if (!formData.lastName) {
+			setFormError((prevState) => ({
+				...prevState,
+				lastNameError: "Last name is required",
+			}));
+			isValid = false;
+		} else {
+			setFormError((prevState) => ({ ...prevState, lastNameError: "" }));
+		}
+		if (!formData.birthdate) {
+			setFormError((prevState) => ({
+				...prevState,
+				birthdateError: "Birthdate is required",
+			}));
+			isValid = false;
+		} else {
+			setFormError((prevState) => ({ ...prevState, birthdateError: "" }));
+		}
+		if (!formData.zipcode) {
+			setFormError((prevState) => ({
+				...prevState,
+				locationError: "Location is required",
+			}));
+			isValid = false;
+		} else {
+			setFormError((prevState) => ({ ...prevState, locationError: "" }));
+		}
+		if (!formData.phone) {
+			setFormError((prevState) => ({
+				...prevState,
+				phoneError: "Phone number is required",
+			}));
+			isValid = false;
+		} else {
+			setFormError((prevState) => ({ ...prevState, phoneError: "" }));
+		}
+		if (!formData.email) {
+			setFormError((prevState) => ({
+				...prevState,
+				emailError: "Email is required",
+			}));
+			isValid = false;
+		} else {
+			setFormError((prevState) => ({ ...prevState, emailError: "" }));
+		}
+		if (!formData.password) {
+			setFormError((prevState) => ({
+				...prevState,
+				passwordError: "Password is required",
+			}));
+			isValid = false;
+		} else {
+			setFormError((prevState) => ({ ...prevState, passwordError: "" }));
+		}
+		if (formData.password !== formData.password2) {
+			setFormError((prevState) => ({
+				...prevState,
+				password2Error: "Passwords do not match",
+			}));
+			isValid = false;
+		} else {
+			setFormError((prevState) => ({ ...prevState, password2Error: "" }));
+		}
+		return isValid;
+	};
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		console.log(formData);
+		if (!isValidForm()) return;
+		register(formData);
 	};
 	const handleReset = (e: React.FormEvent) => {
 		e.preventDefault();
 		setFormError({
-			fnameError: "",
-			lnameError: "",
-			bdayError: "",
-			zipError: "",
+			firstNameError: "",
+			lastNameError: "",
+			birthdateError: "",
+			phoneError: "",
+			zipcodeError: "",
 			emailError: "",
 			passwordError: "",
 			password2Error: "",
 		});
 		setFormData({
-			fname: "",
-			lname: "",
-			bday: "",
-			zip: "",
+			firstName: "",
+			lastName: "",
+			birthdate: "",
+			zipcode: "",
+			phone: "",
 			email: "",
 			password: "",
 			password2: "",
@@ -51,46 +134,48 @@ const Register = () => {
 			<h3>Create an account</h3>
 			<Form action="#" formId="register" method="post">
 				<FormGroup>
-					<label htmlFor="fname">Enter Your First Name</label>
+					<label htmlFor="firstName">Enter Your First Name</label>
 					<input
 						type="text"
 						placeholder="First Name: "
-						name="fname"
+						name="firstName"
 						onChange={(e) =>
-							setFormData({ ...formData, fname: e.target.value })
+							setFormData({ ...formData, firstName: e.target.value })
 						}
-						value={formData.fname}
+						value={formData.firstName}
 					/>
 					<div className="error">
-						<span>{formError.fnameError}</span>
+						<span>{formError.firstNameError}</span>
 					</div>
 				</FormGroup>
 				<FormGroup>
-					<label htmlFor="lname">Enter Your Last Name</label>
+					<label htmlFor="lastName">Enter Your Last Name</label>
 					<input
 						type="text"
 						placeholder="Last Name: "
-						name="lname"
+						name="lastName"
 						onChange={(e) =>
-							setFormData({ ...formData, lname: e.target.value })
+							setFormData({ ...formData, lastName: e.target.value })
 						}
-						value={formData.lname}
+						value={formData.lastName}
 					/>
 					<div className="error">
-						<span>{formError.lnameError}</span>
+						<span>{formError.lastNameError}</span>
 					</div>
 				</FormGroup>
 				<FormGroup>
-					<label htmlFor="bday">Enter Your Birthdate</label>
+					<label htmlFor="birthdate">Enter Your birthdate</label>
 					<input
 						type="date"
 						placeholder="Birth Date: "
-						name="bday"
-						onChange={(e) => setFormData({ ...formData, bday: e.target.value })}
-						value={formData.bday}
+						name="birthdate"
+						onChange={(e) =>
+							setFormData({ ...formData, birthdate: e.target.value })
+						}
+						value={formData.birthdate}
 					/>
 					<div className="error">
-						<span>{formError.bdayError}</span>
+						<span>{formError.birthdateError}</span>
 					</div>
 				</FormGroup>
 				<FormGroup>
@@ -99,11 +184,28 @@ const Register = () => {
 						type="number"
 						placeholder="Zipcode: "
 						name="zip"
-						onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
-						value={formData.zip}
+						onChange={(e) =>
+							setFormData({ ...formData, zipcode: e.target.value })
+						}
+						value={formData.zipcode}
 					/>
 					<div className="error">
-						<span>{formError.zipError}</span>
+						<span>{formError.zipcodeError}</span>
+					</div>
+				</FormGroup>
+				<FormGroup>
+					<label htmlFor="zip">Enter Your Phone Number</label>
+					<input
+						type="number"
+						placeholder="Phone: "
+						name="phone"
+						onChange={(e) =>
+							setFormData({ ...formData, phone: e.target.value })
+						}
+						value={formData.phone}
+					/>
+					<div className="error">
+						<span>{formError.phoneError}</span>
 					</div>
 				</FormGroup>
 				<FormGroup>

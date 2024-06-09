@@ -2,7 +2,7 @@ import Form from "./../components/utils/Form";
 import { useState } from "react";
 import FormGroup from "./../components/utils/FormGroup";
 import "./../styles/Form.css";
-
+import { login } from "../helper/routes";
 const SignIn = () => {
 	const [formData, setFormData] = useState({
 		email: "",
@@ -14,6 +14,7 @@ const SignIn = () => {
 	});
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+		login(formData);
 		console.log(formData);
 	};
 	const handleReset = (e: React.FormEvent) => {
