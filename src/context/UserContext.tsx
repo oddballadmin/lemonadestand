@@ -1,34 +1,49 @@
 // OptionContext.js
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useMemo, useState, useEffect } from "react";
+import { getProfile } from "./../helper/routes";
+import { JobType } from "./../types";
 
-// Create the context
 interface UserType {
-	name: string;
+	firstName: string;
+	lastName: string;
 	email: string;
+	_id: string;
+	birthdate: string;
+	jobsApplied: [JobType | null];
 }
 interface UserContextType {
 	user: UserType;
 	setUser: React.Dispatch<React.SetStateAction<UserType>>;
+	refreshUser?: () => void;
 }
-const UserContext = createContext<UserContextType | undefined>(undefined);
+export const UserContext = createContext<UserContextType | undefined>(
+	undefined
+);
 
 // Create a provider component
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 	const [user, setUser] = useState<UserType>({
-		name: "John Doe",
+		firstName: "",
+		lastName: "",
 		email: "",
+		_id: "",
+		birthdate: "",
+		jobsApplied: [null],
 	});
-
-	const value = useMemo(() => ({ user, setUser }), [user, setUser]);
+	const fetchUser = async () => {
+		try {
+			const userData = await getProfile(); // Get user data
+			setUser(userData); // Set user data
+		} catch (error) {
+			console.error("Failed to fetch user:", error);
+		}
+	};
+	useEffect(() => {
+		fetchUser();
+	}, []); // Empty dependency array to run only once on mount
+	const value = useMemo(
+		() => ({ user, setUser, refreshUser: fetchUser }),
+		[user, setUser]
+	);
 	return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
-};
-
-// Custom hook to use the OptionContext
-export const useUserContext = () => {
-	const context = useContext(UserContext);
-
-	if (context === undefined) {
-		throw new Error("useUserContext must be used within an OptionProvider");
-	}
-	return context;
 };

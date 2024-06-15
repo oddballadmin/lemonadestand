@@ -54,7 +54,15 @@ p {
 .container {
 	padding-inline: 2rem;
 }
-
+.accepted {
+	color: rgb(0, 154, 0);
+}
+.closed {
+	color: rgb(217, 0, 0);
+}
+.open {
+	color: orange;
+}
 @media (prefers-color-scheme: light) {
 	:root {
 		--secondary-color: #242424;

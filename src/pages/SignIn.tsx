@@ -3,7 +3,9 @@ import { useState } from "react";
 import FormGroup from "./../components/utils/FormGroup";
 import "./../styles/Form.css";
 import { login } from "../helper/routes";
+import { useUserContext } from "../hooks/useUserContext";
 const SignIn = () => {
+	const { refreshUser } = useUserContext();
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -16,6 +18,7 @@ const SignIn = () => {
 		e.preventDefault();
 		login(formData);
 		console.log(formData);
+		refreshUser && refreshUser();
 	};
 	const handleReset = (e: React.FormEvent) => {
 		e.preventDefault();

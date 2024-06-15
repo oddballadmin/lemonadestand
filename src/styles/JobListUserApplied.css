@@ -1,0 +1,13 @@
+.JobListUserApplied {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+	& > .listContainer {
+		display: flex;
+		flex-direction: row;
+		gap: 2rem;
+		list-style: none;
+		overflow-x: scroll;
+	}
+}
