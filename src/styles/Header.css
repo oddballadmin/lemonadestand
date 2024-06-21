@@ -3,7 +3,7 @@
 	flex-flow: row nowrap;
 	justify-content: space-between;
 	align-items: center;
-	padding-block: 1rem !important;
+	padding-block: 1rem;
 	flex: 1;
 	& > .brand > a {
 		font-size: clamp(1.25rem, 1rem + 1vw, 1.65rem);

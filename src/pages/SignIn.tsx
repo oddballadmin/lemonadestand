@@ -4,21 +4,28 @@ import FormGroup from "./../components/utils/FormGroup";
 import "./../styles/Form.css";
 import { login } from "../helper/routes";
 import { useUserContext } from "../hooks/useUserContext";
+import { Navigate } from "react-router-dom";
 const SignIn = () => {
 	const { refreshUser } = useUserContext();
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
 	});
+	const [redirect, setRedirect] = useState(false);
 	const [formError, setFormError] = useState({
 		emailError: "",
 		passwordError: "",
 	});
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		login(formData);
-		console.log(formData);
-		refreshUser && refreshUser();
+		login(formData)
+			.then(() => {
+				setRedirect(true);
+				refreshUser && refreshUser();
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 	const handleReset = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -31,6 +38,10 @@ const SignIn = () => {
 			passwordError: "",
 		});
 	};
+	if (redirect) {
+		return <Navigate to="/" />;
+	}
+
 	return (
 		<div className="Form container">
 			<h3>Login To Your Account</h3>

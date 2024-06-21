@@ -1,30 +1,44 @@
-import JobListUserApplied from "../components/Job/JobListUserApplied";
+// import JobListUserApplied from "../components/Job/JobListUserApplied";
 import { useUserContext } from "../hooks/useUserContext";
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import { getAppliedJobs } from "../helper/routes";
+import { JobType } from "../types";
+import JobListUserApplied from "../components/Job/JobListUserApplied";
+import JobItemApplied from "../components/Job/JobItemApplied";
 const Home = () => {
 	const { user, refreshUser } = useUserContext(); // Initialize user as null
+	const [appliedJobs, setAppliedJobs] = useState<JobType[]>();
+	const getAppliedJobsData = async () => {
+		const data = await getAppliedJobs();
+		setAppliedJobs(data);
+	};
 	useEffect(() => {
 		refreshUser && refreshUser();
+		getAppliedJobsData();
 	}, []);
 
 	return (
-		<>
-			<div>
-				<h1>Welcome {user ? user.firstName : "Guest"}!</h1>
-				{user && (
-					<div>
-						<p>Email: {user.email}</p>
-						<small>ID: {user._id}</small>
-						<div className="birthDay">
-							{new Date(user.birthdate).toLocaleDateString()}
-						</div>
-
-						<JobListUserApplied />
+		<div>
+			<h1>Welcome {user ? user.firstName : "Guest"}!</h1>
+			{user && (
+				<div>
+					<p>Email: {user.email}</p>
+					<small>ID: {user._id}</small>
+					<div className="birthDay">
+						{new Date(user.birthdate).toLocaleDateString()}
 					</div>
-				)}
-			</div>
-		</>
+
+					<h2>Jobs you have applied to:</h2>
+					{appliedJobs && (
+						<JobListUserApplied>
+							{appliedJobs.map((job) => (
+								<JobItemApplied job={job} />
+							))}
+						</JobListUserApplied>
+					)}
+				</div>
+			)}
+		</div>
 	);
 };
 

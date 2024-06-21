@@ -3,5 +3,10 @@
 		all: unset;
 		display: flex;
 		font-size: clamp(1.5rem, 2.5vw + 1rem, 2.5rem);
+		& > svg {
+			& > g {
+				fill: var(--secondary-color);
+			}
+		}
 	}
 }

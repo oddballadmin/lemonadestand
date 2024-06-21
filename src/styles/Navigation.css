@@ -2,9 +2,8 @@
 	display: flex;
 	position: absolute;
 	height: 50%;
-	border: 0.15rem solid #f7f7f7;
-	background-color: var(--accent-color);
-	justify-content: left;
+	border: 0.15rem solid var(--accent-color);
+	background: var(--nav-back);
 	align-items: center;
 	border-top-right-radius: 2rem;
 	border-bottom-right-radius: 2rem;
@@ -15,8 +14,7 @@
 		list-style: none;
 		height: auto;
 		gap: 5rem;
-		grid-template-columns: repeat(auto, 1fr);
-		padding: 0 4rem 0 0;
+		padding: 0 2rem 0 0;
 		& > li {
 			text-align: center;
 
@@ -37,7 +35,6 @@
 	.Navigation {
 		position: absolute;
 		width: 100vw;
-		height: 50%;
 		border-top-right-radius: 0;
 		justify-content: center;
 		border-bottom-left-radius: 2rem;

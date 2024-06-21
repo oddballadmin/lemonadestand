@@ -1,12 +1,35 @@
 .JobItemApplied {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	padding: 1rem;
-	background-color: #f5f5f5;
+	flex-flow: row nowrap;
+	text-align: center;
+	padding: 2rem;
+	border: var(--secondary-color) 2px solid;
 	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	min-width: 40ch;
+	justify-content: center;
+	box-shadow: 0 0 10px rgba(0, 179, 255, 0.323);
+
+	position: relative;
+	& > .editBar {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: none;
+		gap: 0.5rem;
+		justify-content: end;
+		padding: 0.5rem;
+		width: 100%;
+	}
+}
+.JobItemApplied:hover {
+	box-shadow: 0 0 10px rgba(0, 179, 255, 0.823);
+	& > .editBar {
+		display: flex;
+	}
+}
+.JobItemApplied:focus {
+	box-shadow: 0 0 10px rgba(0, 179, 255, 0.823);
+	& > .editBar {
+		display: flex;
+	}
 }

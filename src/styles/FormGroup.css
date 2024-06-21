@@ -4,10 +4,12 @@
 	text-align: center;
 	flex-wrap: wrap;
 	& > input {
-		padding: 0.25rem;
+		padding: 0.35rem;
 		border: 1px solid var(--accent-color);
-		border-radius: 0.15rem;
+		border-radius: 10px;
 		outline: none;
+		margin-inline: auto;
+		width: 75%;
 
 		&:focus {
 			border: 1px solid var(--primary-color);
@@ -21,11 +23,12 @@
 @media screen and (min-width: 768px) {
 	.FormGroup {
 		width: 50%;
-		flex-direction: row;
-		justify-content: center;
+		flex-flow: column nowrap;
+		justify-content: space-around;
 		gap: 1rem;
 		& > input {
 			padding: 0.5rem;
+			flex: 1;
 		}
 	}
 }

@@ -1,0 +1,33 @@
+.JobBoardItem {
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 2rem;
+	border: var(--secondary-color) 2px solid;
+	border-radius: 10px;
+	width: 40ch;
+	justify-content: space-between;
+	box-shadow: 0 0 10px var(--dark-blue);
+	gap: 0.25rem;
+
+	position: relative;
+	& > .row {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		gap: 2rem;
+		align-items: center;
+		padding: 0.15rem 0;
+	}
+}
+.JobBoardItem:hover {
+	box-shadow: 0 0 10px var(--dark-blue-hover);
+	& > .editBar {
+		display: flex;
+	}
+}
+.JobBoardItem:focus {
+	box-shadow: 0 0 10px var(--dark-blue-hover);
+	& > .editBar {
+		display: flex;
+	}
+}

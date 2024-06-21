@@ -35,6 +35,7 @@ export const login = async (user: UserLoginType) => {
 		const res = await axios.post(`/login`, user);
 		console.log(res.data);
 		toast.success("Logged in successfully!");
+
 		return res;
 	} catch (err) {
 		console.error(err);
@@ -63,7 +64,6 @@ export const getUser = async () => {
 export const getProfile = async () => {
 	try {
 		const res = await axios.get(`/profile`);
-		console.log(res.data);
 		return res.data;
 	} catch (err) {
 		console.error(err);
@@ -74,6 +74,22 @@ export const getJobsById = async (id: string) => {
 	try {
 		const res = await axios.get(`/jobs/${id}`);
 		console.log(res.data);
+		return res.data;
+	} catch (err) {
+		console.error(err);
+	}
+};
+export const getAppliedJobs = async () => {
+	try {
+		const res = await axios.get(`/profile/appdata`);
+		return res.data;
+	} catch (err) {
+		console.error(err);
+	}
+};
+export const getAllJobs = async () => {
+	try {
+		const res = await axios.get(`/jobs/all`);
 		return res.data;
 	} catch (err) {
 		console.error(err);
