@@ -13,3 +13,12 @@ export interface JobBoardType extends JobType {
 	applicants: string[];
 	payment: number;
 }
+
+export interface CreateJobType {
+	title: string | undefined;
+	description: string | undefined;
+	zipcode: number | undefined;
+	payment: number | undefined;
+	creator: string | undefined;
+	
+}

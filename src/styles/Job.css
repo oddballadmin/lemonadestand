@@ -1,0 +1,26 @@
+.Job {
+	display: flex;
+	flex-flow: column nowrap;
+	position: relative;
+
+	& > .row {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		& > .filter {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			& > input {
+				all: unset;
+				display: flex;
+				border: 2px solid var(--secondary-color);
+				border-radius: 5px;
+				padding: 0.25rem 0.5rem;
+			}
+			& > ::placeholder {
+				color: var(--secondary-color);
+			}
+		}
+	}
+}

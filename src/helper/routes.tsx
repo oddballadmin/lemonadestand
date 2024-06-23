@@ -1,7 +1,7 @@
 import axios from "axios";
 import { validateLogin } from "./validate";
 import { toast } from "react-hot-toast";
-
+import { CreateJobType } from "../types";
 type UserRegisterType = {
 	firstName: string;
 	lastName: string;
@@ -90,8 +90,22 @@ export const getAppliedJobs = async () => {
 export const getAllJobs = async () => {
 	try {
 		const res = await axios.get(`/jobs/all`);
+		console.log("rendered Jobs List");
 		return res.data;
 	} catch (err) {
 		console.error(err);
+	}
+};
+
+export const createJob = async (job: CreateJobType) => {
+	try {
+		const res = await axios.post(`/jobs/create`, job);
+		console.log(res.data);
+		toast.success("Job Created successfully!");
+
+		return res;
+	} catch (err) {
+		console.error(err);
+		toast.error("Error creating job, please retry later!");
 	}
 };

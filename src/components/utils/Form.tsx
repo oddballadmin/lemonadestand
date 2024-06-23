@@ -9,7 +9,7 @@ type FormProps = {
 
 const Form = ({ children, action, method, formId, className }: FormProps) => {
 	return (
-		<form method={method} action={action} id={formId} className={className}> 
+		<form method={method} action={action} id={formId} className={className}>
 			{children}
 		</form>
 	);

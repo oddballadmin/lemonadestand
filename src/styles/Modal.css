@@ -1,0 +1,19 @@
+.Modal {
+	display: flex;
+	position: absolute;
+	min-width: 40rem;
+	background: var(--background-grad);
+	border: 2px solid var(--secondary-color);
+	border-radius: 10px;
+	top: 100%;
+	transform: translateY(2%);
+
+	z-index: 2;
+	left: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.Modal {
+		min-width: 100%;
+	}
+}

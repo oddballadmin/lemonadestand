@@ -1,0 +1,26 @@
+.CreateJobForm {
+	width: 100%;
+}
+form {
+	display: flex;
+	flex-flow: nowrap column;
+	gap: 1rem;
+	padding: 2rem 0;
+
+	& > .FormGroup {
+		width: 100%;
+	}
+	& > .buttonGroup {
+		display: flex;
+		gap: 1rem;
+		padding: 1rem 0;
+	}
+}
+@media screen and (max-width: 768px) {
+	.CreateJobForm {
+		width: 100%;
+		& > .buttonGroup {
+			justify-content: center;
+		}
+	}
+}

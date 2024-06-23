@@ -1,10 +1,10 @@
 import "./../../styles/HeaderMenu.css";
 import { FcMenu } from "react-icons/fc";
 import Button from "./Button";
-import { useOptionContext } from "./../../context/OptionsContext";
-
+import { useOptionContext } from "./../../hooks/useOptionContext";
 const HeaderMenu = () => {
-	const { navToggle, setNavToggle } = useOptionContext();
+	const context = useOptionContext();
+	const { navToggle, setNavToggle } = context;
 	const toggleNav = () => {
 		setNavToggle(!navToggle);
 		console.log(navToggle);

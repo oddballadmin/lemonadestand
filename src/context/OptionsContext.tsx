@@ -1,30 +1,30 @@
 // OptionContext.js
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 // Create the context
 interface OptionContextType {
 	navToggle: boolean;
-	setNavToggle: (toggle: boolean) => void;
+	setNavToggle: React.Dispatch<React.SetStateAction<boolean>>;
+
+	filterText: number | undefined;
+	setFilterText: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
-const OptionContext = createContext<OptionContextType | undefined>(undefined);
+export const OptionContext = createContext<OptionContextType | undefined>(
+	undefined
+);
 
 // Create a provider component
 export const OptionProvider = ({ children }: { children: React.ReactNode }) => {
 	const [navToggle, setNavToggle] = useState(false);
+	const [filterText, setFilterText] = useState<number | undefined>(undefined);
 
 	return (
-		<OptionContext.Provider value={{ navToggle, setNavToggle }}>
+		<OptionContext.Provider
+			value={{ navToggle, setNavToggle, filterText, setFilterText }}
+		>
 			{children}
 		</OptionContext.Provider>
 	);
 };
 
 // Custom hook to use the OptionContext
-export const useOptionContext = () => {
-	const context = useContext(OptionContext);
-
-	if (context === undefined) {
-		throw new Error("useOptionContext must be used within an OptionProvider");
-	}
-	return context;
-};

@@ -19,7 +19,13 @@ html,
 	--dark-blue: rgba(0, 179, 255, 0.323);
 	--dark-blue-hover: rgba(0, 179, 255, 0.823);
 	--nav-back: #1088d3;
+	--background-grad: linear-gradient(
+		155deg,
+		rgba(75, 8, 109, 0.95) 5%,
+		rgba(172, 192, 254, 0.95)
+	);
 }
+
 body {
 	min-height: 100svh;
 	overflow-x: hidden;
@@ -31,6 +37,8 @@ button {
 	border-radius: 10px;
 	padding: 0.25rem 0.5rem;
 	cursor: pointer;
+	min-width: 5rem;
+	text-align: center;
 }
 a {
 	text-underline-offset: 0.5rem;
@@ -61,10 +69,13 @@ h6 {
 p {
 	font-size: clamp(1rem, 0.875rem + 0.5vw, 1.125rem);
 }
+.relative {
+	position: relative;
+}
 .container {
 	padding-inline: 2rem;
 }
-.accepted {
+.completed {
 	color: rgb(0, 154, 0);
 }
 .closed {
@@ -73,6 +84,7 @@ p {
 .open {
 	color: orange;
 }
+
 @media (prefers-color-scheme: light) {
 	:root {
 		--secondary-color: #242424;
@@ -101,6 +113,14 @@ p {
 	a:hover {
 		text-decoration: none;
 	}
+}
+input,
+textarea {
+	all: unset;
+	display: flex;
+	border: 2px solid var(--secondary-color);
+	border-radius: 5px;
+	padding: 0.25rem 0.5rem;
 }
 @media (prefers-color-scheme: dark) {
 	:root {
