@@ -18,7 +18,7 @@ type UserLoginType = {
 };
 export const register = async (user: UserRegisterType) => {
 	try {
-		const res = await axios.post(`/register`, user);
+		const res = await axios.post(`/api/register`, user);
 		console.log(res.data);
 		toast.success("Registered successfully!");
 
@@ -33,7 +33,7 @@ export const login = async (user: UserLoginType) => {
 			toast.error("Invalid login credentials!");
 			return;
 		}
-		const res = await axios.post(`/login`, user);
+		const res = await axios.post(`/api/login`, user);
 		console.log(res.data);
 		toast.success("Logged in successfully!");
 
@@ -55,7 +55,7 @@ export const login = async (user: UserLoginType) => {
 
 export const getUser = async () => {
 	try {
-		const res = await axios.get(`/user`);
+		const res = await axios.get(`/api/user`);
 		console.log(res.data);
 		return res.data;
 	} catch (err) {
@@ -64,7 +64,7 @@ export const getUser = async () => {
 };
 export const getProfile = async () => {
 	try {
-		const res = await axios.get(`/profile`);
+		const res = await axios.get(`/api/profile`);
 		return res.data;
 	} catch (err) {
 		console.error(err);
@@ -73,7 +73,7 @@ export const getProfile = async () => {
 
 export const getJobsById = async (id: string) => {
 	try {
-		const res = await axios.get(`/jobs/${id}`);
+		const res = await axios.get(`/api/jobs/${id}`);
 		console.log(res.data);
 		return res.data;
 	} catch (err) {
@@ -82,7 +82,7 @@ export const getJobsById = async (id: string) => {
 };
 export const getAppliedJobs = async () => {
 	try {
-		const res = await axios.get(`/profile/appdata`);
+		const res = await axios.get(`/api/profile/appdata`);
 		return res.data;
 	} catch (err) {
 		console.error(err);
@@ -90,7 +90,7 @@ export const getAppliedJobs = async () => {
 };
 export const getAllJobs = async () => {
 	try {
-		const res = await axios.get(`/jobs/all`);
+		const res = await axios.get(`/api/jobs/all`);
 		console.log("rendered Jobs List");
 		return res.data;
 	} catch (err) {
@@ -100,7 +100,7 @@ export const getAllJobs = async () => {
 
 export const createJob = async (job: CreateJobType) => {
 	try {
-		const res = await axios.post(`/jobs/create`, job);
+		const res = await axios.post(`/api/jobs/create`, job);
 		console.log(res.data);
 		toast.success("Job Created successfully!");
 
@@ -112,7 +112,10 @@ export const createJob = async (job: CreateJobType) => {
 };
 export const applyJob = async (jobId: string, message: string) => {
 	try {
-		const res = await axios.post(`/jobs/apply/${jobId}`, { jobId, message });
+		const res = await axios.post(`/api/jobs/apply/${jobId}`, {
+			jobId,
+			message,
+		});
 		console.log(res.data);
 		toast.success("Applied successfully!");
 
@@ -125,7 +128,7 @@ export const applyJob = async (jobId: string, message: string) => {
 
 export const getUserCreatedJobs = async () => {
 	try {
-		const res = await axios.get(`/profile/jobsdata`);
+		const res = await axios.get(`/api/profile/jobsdata`);
 		console.log(res.data);
 		return res.data;
 	} catch (err) {
@@ -134,7 +137,7 @@ export const getUserCreatedJobs = async () => {
 };
 export const getJobApplicants = async (jobId: string) => {
 	try {
-		const res = await axios.get(`/jobs/${jobId}/applicants`);
+		const res = await axios.get(`/api/jobs/${jobId}/applicants`);
 		console.log(res.data);
 		return res.data;
 	} catch (err) {
