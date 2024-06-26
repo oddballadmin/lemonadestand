@@ -3,7 +3,7 @@
 	position: absolute;
 	height: 50%;
 	border: 0.15rem solid var(--accent-color);
-	background: var(--nav-back);
+	background: var(--background-grad);
 	align-items: center;
 	border-top-right-radius: 2rem;
 	border-bottom-right-radius: 2rem;

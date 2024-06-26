@@ -20,9 +20,9 @@ html,
 	--dark-blue-hover: rgba(0, 179, 255, 0.823);
 	--nav-back: #1088d3;
 	--background-grad: linear-gradient(
-		155deg,
-		rgba(75, 8, 109, 0.95) 5%,
-		rgba(172, 192, 254, 0.95)
+		115deg,
+		rgba(75, 8, 109, 0.8) 45%,
+		rgba(172, 192, 254, 0.8)
 	);
 }
 
@@ -31,6 +31,7 @@ body {
 	overflow-x: hidden;
 	font-weight: 600;
 }
+
 button {
 	all: unset;
 	border: 2px solid var(--secondary-color);
@@ -136,6 +137,7 @@ textarea {
 			rgba(75, 8, 109, 0.85),
 			rgba(172, 192, 254, 0.85)
 		);
+
 		a {
 			color: var(--secondary-color);
 			text-decoration: underline;

@@ -22,3 +22,20 @@ export interface CreateJobType {
 	creator: string | undefined;
 	
 }
+
+export interface UserCreatedJobType{
+	title: string;
+	description: string;
+	location: string;
+	dateCreated: string;
+	applicants: number ;
+	id: string;
+}
+
+export interface JobApplicationType{
+	name: string;
+	email: string;
+	dateApplied: string;
+	phone: number;
+	message: string;
+}

@@ -7,6 +7,7 @@ import Error from "./pages/Error";
 import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
 import axios from "axios";
+import Applicants from "./pages/Applicants";
 import.meta.env.VITE_NODE_ENV === "development"
 	? (axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL)
 	: (axios.defaults.baseURL = import.meta.env.VITE_PROD_API_BASE_URL);
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
 		element: <Dashboard />,
 		children: [
 			{ index: true, element: <Home /> },
-			{ path: "jobs", element: <Jobs /> },
+			{ path: "jobs", element: <Jobs />, children: [] },
+			{ path: "jobs/:jobId/applicants", element: <Applicants /> },
 			{ path: "login", element: <SignIn /> },
 			{ path: "register", element: <Register /> },
 			{ path: "*", element: <Error /> }, // Optional: Catch-all route for 404

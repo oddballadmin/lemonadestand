@@ -14,12 +14,13 @@
 }
 @media screen and (min-width: 768px) {
 	.FormGroup {
-		width: 50%;
+		width: 50% !important;
 		flex-flow: column nowrap;
 		justify-content: space-around;
 		gap: 1rem;
 		& > input,
-		textarea {
+		textarea,
+		button {
 			padding: 0.5rem;
 			flex: 1;
 		}

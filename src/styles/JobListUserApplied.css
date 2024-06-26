@@ -1,8 +1,14 @@
 .JobListUserApplied {
-	display: flex;
-	flex-flow: row wrap;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(43ch, 100%), 1fr));
 	justify-content: baseline;
 	gap: 1.25rem;
 	list-style: none;
+
 	padding: 2rem 0;
+}
+@media screen and (max-width: 672px) {
+	.JobListUserApplied {
+		grid-template-columns: repeat(auto-fill, minmax(min(25ch, 100%), 1fr));
+	}
 }

@@ -1,7 +1,7 @@
 .JobBoardList {
 	display: grid;
 	flex-flow: row wrap;
-	grid-template-columns: repeat(auto-fill, minmax(43ch, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(min(43ch, 100%), 1fr));
 	justify-content: baseline;
 	gap: 1.25rem;
 	list-style: none;

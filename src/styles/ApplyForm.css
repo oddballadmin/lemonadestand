@@ -1,0 +1,8 @@
+.ApplyForm {
+	& > form {
+		padding-block: 0;
+		& > .FormGroup {
+			width: 100% !important;
+		}
+	}
+}

@@ -1,14 +1,34 @@
 .JobBoardItem {
 	display: flex;
-	flex-flow: column nowrap;
+	flex-flow: column wrap;
 	padding: 2rem;
 	border: var(--secondary-color) 2px solid;
 	border-radius: 10px;
 	justify-content: space-between;
 	box-shadow: 0 0 10px var(--dark-blue);
 	gap: 0.25rem;
-
+	height: 20rem;
 	position: relative;
+	overflow-y: scroll;
+	& > .descContainer {
+		display: flex;
+		height: 100%;
+		flex-flow: column wrap;
+
+		justify-content: space-between;
+		& > .desc {
+			display: flex;
+			flex-flow: column wrap;
+			overflow-y: scroll;
+		}
+		& > .btnGroup {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			align-items: center;
+			gap: 0.5rem;
+		}
+	}
 	& > .row {
 		display: flex;
 		flex-flow: row nowrap;
@@ -28,5 +48,10 @@
 	box-shadow: 0 0 10px var(--dark-blue-hover);
 	& > .editBar {
 		display: flex;
+	}
+}
+@media screen and (max-width: 320px) {
+	.JobBoardItem {
+		flex: 1;
 	}
 }

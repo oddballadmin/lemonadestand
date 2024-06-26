@@ -1,0 +1,25 @@
+.JobApplicationsItem {
+	display: flex;
+	flex-flow: column wrap;
+	padding: 2rem;
+	border: var(--secondary-color) 2px solid;
+	border-radius: 10px;
+	justify-content: space-between;
+	box-shadow: 0 0 10px var(--dark-blue);
+	gap: 0.25rem;
+	height: 20rem;
+	position: relative;
+	overflow-y: scroll;
+	& > .entries {
+		display: flex;
+		flex-flow: column wrap;
+		gap: 1rem;
+
+		& > .contactInfo {
+			display: flex;
+			flex-flow: column wrap;
+
+			gap: 0.5rem;
+		}
+	}
+}

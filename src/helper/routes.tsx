@@ -20,6 +20,7 @@ export const register = async (user: UserRegisterType) => {
 	try {
 		const res = await axios.post(`/register`, user);
 		console.log(res.data);
+		toast.success("Registered successfully!");
 
 		return res;
 	} catch (err) {
@@ -107,5 +108,36 @@ export const createJob = async (job: CreateJobType) => {
 	} catch (err) {
 		console.error(err);
 		toast.error("Error creating job, please retry later!");
+	}
+};
+export const applyJob = async (jobId: string, message: string) => {
+	try {
+		const res = await axios.post(`/jobs/apply/${jobId}`, { jobId, message });
+		console.log(res.data);
+		toast.success("Applied successfully!");
+
+		return res;
+	} catch (err) {
+		console.error(err);
+		toast.error("Error applying job, please retry later!");
+	}
+};
+
+export const getUserCreatedJobs = async () => {
+	try {
+		const res = await axios.get(`/profile/jobsdata`);
+		console.log(res.data);
+		return res.data;
+	} catch (err) {
+		console.error(err);
+	}
+};
+export const getJobApplicants = async (jobId: string) => {
+	try {
+		const res = await axios.get(`/jobs/${jobId}/applicants`);
+		console.log(res.data);
+		return res.data;
+	} catch (err) {
+		console.error(err);
 	}
 };
