@@ -1,4 +1,3 @@
-import React from "react";
 import { JobApplicationType } from "../../types";
 import JobApplicationsItem from "./JobApplicationsItem";
 const ApplicationList = ({

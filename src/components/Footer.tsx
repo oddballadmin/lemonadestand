@@ -1,4 +1,3 @@
-import React from "react";
 // type FooterProps = {
 // 	// No props needed for the Footer component
 // };

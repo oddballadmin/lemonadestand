@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/JobItemApplied.css";
 import { JobType } from "../../types";
 import { FaTrash } from "react-icons/fa";

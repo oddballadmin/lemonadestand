@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/JobApplicationsItem.css";
 import { JobApplicationType } from "../../types";
 

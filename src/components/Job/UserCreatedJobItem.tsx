@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/JobBoardItem.css";
 import { UserCreatedJobType } from "../../types";
 import { useNavigate } from "react-router-dom";
