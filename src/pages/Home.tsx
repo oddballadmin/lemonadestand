@@ -33,12 +33,11 @@ const Home = () => {
 			{user && (
 				<div>
 					<p>Email: {user.email}</p>
-					<small>ID: {user._id}</small>
 					<div className="birthDay">
-						{new Date(user.birthdate).toLocaleDateString()}
+						<p>Birthdate: {new Date(user.birthdate).toLocaleDateString()}</p>
 					</div>
 					<div className="row">
-						<h2>Jobs you have applied to:</h2>
+						<h2>Jobs you have applied to</h2>
 						{appliedJobs && (
 							<JobListUserApplied>
 								{appliedJobs.map((job) => (
@@ -48,7 +47,7 @@ const Home = () => {
 						)}
 					</div>
 					<div className="row">
-						<h2>Jobs you have created:</h2>
+						<h2>Jobs you have created</h2>
 						<UserCreatedJobList>
 							{userCreatedJobs?.map((job) => (
 								<UserCreatedJobItem job={job} />

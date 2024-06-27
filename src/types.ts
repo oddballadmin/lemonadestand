@@ -4,6 +4,7 @@ export interface JobType {
 	creator: string;
 	dateApplied: string;
 	status: "Accepted" | "Closed" | "Open";
+	description?: string;
 }
 
 export interface JobBoardType extends JobType {

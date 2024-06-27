@@ -30,6 +30,7 @@ const Applicants = () => {
 				<div className="row">
 					<h2>Job: {job?.title}</h2>
 					<p className={job?.status.toLowerCase()}>{job?.status}</p>
+					<p>{job?.description}</p>
 					{applicants && applicants.length > 0 ? (
 						<ApplicationList applicationList={applicants} />
 					) : (
