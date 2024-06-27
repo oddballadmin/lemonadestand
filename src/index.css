@@ -21,13 +21,14 @@ html,
 	--nav-back: #1088d3;
 	--background-grad: linear-gradient(
 		115deg,
-		rgba(75, 8, 109, 0.8) 45%,
+		rgba(75, 8, 109, 0.8) 75%,
 		rgba(172, 192, 254, 0.8)
 	);
 }
 
-body {
-	min-height: 100svh;
+body,
+html {
+	height: 100%;
 	overflow-x: hidden;
 	font-weight: 600;
 }
@@ -86,6 +87,43 @@ p {
 	color: orange;
 }
 
+/* @media (prefers-color-scheme: dark) {
+	:root {
+		--secondary-color: #242424;
+
+		--primary-color: #d5d4d4fb;
+
+		color: var(--secondary-color);
+	}
+	html {
+		--background-grad: linear-gradient(
+			115deg,
+			rgba(75, 8, 109, 0.85) 55%,
+			rgba(172, 192, 254, 0.85)
+		);
+	}
+	a {
+		color: var(--primary-color);
+		text-decoration: underline;
+	}
+	.authLinks a {
+		color: var(--secondary-color);
+	}
+	a:visited {
+		color: var(--secondary-color);
+	}
+	a:hover {
+		text-decoration: none;
+	}
+}
+input,
+textarea {
+	all: unset;
+	display: flex;
+	border: 2px solid var(--secondary-color);
+	border-radius: 5px;
+	padding: 0.25rem 0.5rem;
+} */
 @media (prefers-color-scheme: light) {
 	:root {
 		--secondary-color: #242424;
@@ -94,10 +132,10 @@ p {
 
 		color: var(--secondary-color);
 	}
-	body {
-		background: linear-gradient(
-			145deg,
-			rgba(75, 8, 109, 0.85),
+	html {
+		--background-grad: linear-gradient(
+			115deg,
+			rgba(75, 8, 109, 0.85) 55%,
 			rgba(172, 192, 254, 0.85)
 		);
 	}
@@ -131,11 +169,11 @@ textarea {
 
 		color: var(--secondary-color);
 	}
-	body {
+	html {
 		background: linear-gradient(
 			145deg,
-			rgba(75, 8, 109, 0.85),
-			rgba(172, 192, 254, 0.85)
+			rgba(75, 8, 109, 0.95),
+			rgba(172, 192, 254, 0.65)
 		);
 
 		a {
