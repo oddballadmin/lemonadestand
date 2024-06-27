@@ -18,7 +18,7 @@ type UserLoginType = {
 };
 export const register = async (user: UserRegisterType) => {
 	try {
-		const res = await axios.post(`/api/register`, user);
+		const res = await axios.post(`/register`, user);
 		console.log(res.data);
 		toast.success("Registered successfully!");
 
@@ -33,7 +33,7 @@ export const login = async (user: UserLoginType) => {
 			toast.error("Invalid login credentials!");
 			return;
 		}
-		const res = await axios.post(`/api/login`, user);
+		const res = await axios.post(`/login`, user);
 		console.log(res.data);
 		toast.success("Logged in successfully!");
 
@@ -55,7 +55,7 @@ export const login = async (user: UserLoginType) => {
 
 export const getUser = async () => {
 	try {
-		const res = await axios.get(`/api/user`);
+		const res = await axios.get(`/user`);
 		console.log(res.data);
 		return res.data;
 	} catch (err) {
@@ -64,7 +64,7 @@ export const getUser = async () => {
 };
 export const getProfile = async () => {
 	try {
-		const res = await axios.get(`/api/profile`);
+		const res = await axios.get(`/profile`);
 		return res.data;
 	} catch (err) {
 		console.error(err);
