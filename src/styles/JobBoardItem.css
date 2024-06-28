@@ -10,6 +10,25 @@
 	height: 20rem;
 	position: relative;
 	overflow-y: scroll;
+	& > .editBar {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: none;
+		gap: 0.5rem;
+		justify-content: end;
+		padding: 0.5rem;
+		width: 100%;
+		& > button {
+			all: unset;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			& > svg {
+				font-size: 1.5rem;
+			}
+		}
+	}
 	& > .descContainer {
 		display: flex;
 		height: 100%;

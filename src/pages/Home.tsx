@@ -7,6 +7,7 @@ import JobListUserApplied from "../components/Job/JobListUserApplied";
 import JobItemApplied from "../components/Job/JobItemApplied";
 import UserCreatedJobList from "../components/Job/UserCreatedJobList";
 import UserCreatedJobItem from "../components/Job/UserCreatedJobItem";
+import { deleteJob } from "../helper/routes";
 
 const Home = () => {
 	const { user, refreshUser } = useUserContext(); // Initialize user as null
@@ -20,6 +21,16 @@ const Home = () => {
 	const getUserCreatedJobsData = async () => {
 		const data = await getUserCreatedJobs();
 		setUserCreatedJobs(data);
+	};
+	const handleDeleteJob = async (jobId: string) => {
+		try {
+			await deleteJob(jobId);
+			setUserCreatedJobs((prevJobs = []) =>
+				prevJobs.filter((job) => job.id !== jobId)
+			);
+		} catch (err) {
+			console.error(err);
+		}
 	};
 	useEffect(() => {
 		refreshUser && refreshUser();
@@ -38,21 +49,27 @@ const Home = () => {
 					</div>
 					<div className="row">
 						<h2>Jobs you have applied to</h2>
-						{appliedJobs && (
+						{appliedJobs && appliedJobs.length > 0 ? (
 							<JobListUserApplied>
 								{appliedJobs.map((job) => (
 									<JobItemApplied job={job} />
 								))}
 							</JobListUserApplied>
+						) : (
+							<p>No Jobs Have Been Applied To</p>
 						)}
 					</div>
 					<div className="row">
 						<h2>Jobs you have created</h2>
-						<UserCreatedJobList>
-							{userCreatedJobs?.map((job) => (
-								<UserCreatedJobItem job={job} />
-							))}
-						</UserCreatedJobList>
+						{userCreatedJobs && userCreatedJobs?.length > 0 ? (
+							<UserCreatedJobList>
+								{userCreatedJobs?.map((job) => (
+									<UserCreatedJobItem job={job} onDelete={handleDeleteJob} />
+								))}
+							</UserCreatedJobList>
+						) : (
+							<p>No Jobs Have Been Created</p>
+						)}
 					</div>
 				</div>
 			)}

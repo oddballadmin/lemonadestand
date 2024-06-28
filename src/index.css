@@ -42,6 +42,9 @@ button {
 	min-width: 5rem;
 	text-align: center;
 }
+button > * {
+	cursor: pointer;
+}
 a {
 	text-underline-offset: 0.5rem;
 }

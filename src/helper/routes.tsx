@@ -144,3 +144,16 @@ export const getJobApplicants = async (jobId: string) => {
 		console.error(err);
 	}
 };
+
+export const deleteJob = async (jobId: string) => {
+	try {
+		const res = await axios.delete(`/jobs/delete/${jobId}`);
+		console.log(res.data);
+		toast.success("Job Deleted successfully!");
+
+		return res;
+	} catch (err) {
+		console.error(err);
+		toast.error("Error deleting job, please retry later!");
+	}
+};
