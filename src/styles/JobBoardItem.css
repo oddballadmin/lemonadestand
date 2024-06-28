@@ -1,6 +1,6 @@
 .JobBoardItem {
 	display: flex;
-	flex-flow: column wrap;
+	flex-flow: column nowrap;
 	padding: 2rem;
 	border: var(--secondary-color) 2px solid;
 	border-radius: 10px;
@@ -32,6 +32,7 @@
 	& > .row {
 		display: flex;
 		flex-flow: row nowrap;
+		width: 100%;
 		justify-content: space-between;
 		gap: 2rem;
 		align-items: center;
