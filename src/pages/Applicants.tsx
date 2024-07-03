@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 import { getJobsById, getJobApplicants } from "../helper/routes";
 import { JobApplicationType, JobType } from "../types";
 import ApplicationList from "../components/Job/ApplicationList";
+import { useOptionContext } from "../hooks/useOptionContext";
 
 const Applicants = () => {
+	const { setNavToggle } = useOptionContext();
 	const { jobId } = useParams();
 	const [applicants, setApplicants] = useState<JobApplicationType[]>([]);
 	const [job, setJob] = useState<JobType>();
@@ -20,6 +22,8 @@ const Applicants = () => {
 		setJob(res);
 	};
 	useEffect(() => {
+		setNavToggle(false);
+
 		getJob({ id: jobId });
 		getApplicants();
 	}, [jobId]);

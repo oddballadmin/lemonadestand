@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import JobList from "../components/Job/JobList";
 import { useUserContext } from "../hooks/useUserContext";
-import { useOptionContext } from "../hooks/useOptionContext";
 import Modal from "../components/utils/Modal";
 import "../styles/Job.css";
 import CreateJobForm from "../components/Job/CreateJobForm";
 import { JobBoardType } from "../types";
 import { getAllJobs } from "../helper/routes";
+import { useOptionContext } from "../hooks/useOptionContext";
 
 const Jobs = () => {
+	const { setNavToggle } = useOptionContext();
 	const { filterText, setFilterText } = useOptionContext();
 	const { user } = useUserContext();
 	const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +27,7 @@ const Jobs = () => {
 	};
 
 	useEffect(() => {
+		setNavToggle(false);
 		getJobsData();
 	}, []);
 

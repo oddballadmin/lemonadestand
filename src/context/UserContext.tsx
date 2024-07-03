@@ -15,6 +15,8 @@ interface UserContextType {
 	user: UserType;
 	setUser: React.Dispatch<React.SetStateAction<UserType>>;
 	refreshUser?: () => void;
+	loading: boolean;
+	setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const UserContext = createContext<UserContextType | undefined>(
 	undefined
@@ -31,6 +33,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 		birthdate: "",
 		jobsApplied: [null],
 	});
+
 	const fetchUser = async () => {
 		try {
 			setLoading(true);
@@ -46,8 +49,8 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 		fetchUser();
 	}, []); // Empty dependency array to run only once on mount
 	const value = useMemo(
-		() => ({ user, setUser, refreshUser: fetchUser, loading }),
-		[user, loading, setUser]
+		() => ({ user, setUser, refreshUser: fetchUser, loading, setLoading }),
+		[user, loading, setUser, setLoading]
 	);
 	return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

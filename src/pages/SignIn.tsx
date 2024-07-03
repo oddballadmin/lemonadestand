@@ -1,23 +1,30 @@
 import Form from "./../components/utils/Form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormGroup from "./../components/utils/FormGroup";
 import "./../styles/Form.css";
 import { login } from "../helper/routes";
 import { useUserContext } from "../hooks/useUserContext";
 import { Navigate } from "react-router-dom";
+import { useOptionContext } from "../hooks/useOptionContext";
+
 const SignIn = () => {
 	const { refreshUser } = useUserContext();
+	const { setNavToggle } = useOptionContext();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
 	});
+
 	const [redirect, setRedirect] = useState(false);
 	const [formError, setFormError] = useState({
 		emailError: "",
 		passwordError: "",
 	});
+	useEffect(() => {
+		setNavToggle(false);
+	}, []);
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		setIsLoading(true);

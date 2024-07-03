@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "./../components/utils/Form";
 import "../styles/Form.css";
 import FormGroup from "./../components/utils/FormGroup";
 import { register } from "../helper/routes";
+import { useOptionContext } from "../hooks/useOptionContext";
 const Register = () => {
+	const { setNavToggle } = useOptionContext();
+	useEffect(() => {
+		setNavToggle(false);
+	}, []);
 	const [isLoading, setIsLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		firstName: "",

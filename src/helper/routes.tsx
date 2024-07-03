@@ -27,10 +27,14 @@ export const register = async (user: UserRegisterType) => {
 		console.error(err);
 		if (axios.isAxiosError(err) && err.response) {
 			const errorResponse = err.response.data;
-			if (errorResponse.error) {
-				toast.error("User already exists or phone number already in use!");
-			} else {
-				toast.error("Error registering!");
+			if (errorResponse.error === "Password must be at least 6 characters") {
+				toast.error("Password must be at least 6 characters!");
+			}
+			if (errorResponse.error === "Passwords do not match") {
+				toast.error("Passwords do not match");
+			}
+			if (errorResponse.error === "Email already exists") {
+				toast.error("Email already exists!");
 			}
 		} else {
 			toast.error("Network error or server is down!");
