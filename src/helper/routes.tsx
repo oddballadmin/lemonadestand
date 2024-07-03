@@ -25,6 +25,16 @@ export const register = async (user: UserRegisterType) => {
 		return res;
 	} catch (err) {
 		console.error(err);
+		if (axios.isAxiosError(err) && err.response) {
+			const errorResponse = err.response.data;
+			if (errorResponse.error) {
+				toast.error("User already exists or phone number already in use!");
+			} else {
+				toast.error("Error registering!");
+			}
+		} else {
+			toast.error("Network error or server is down!");
+		}
 	}
 };
 export const login = async (user: UserLoginType) => {

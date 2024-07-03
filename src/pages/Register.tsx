@@ -101,14 +101,23 @@ const Register = () => {
 		}
 		return isValid;
 	};
-	const handleSubmit = (e: React.FormEvent) => {
+
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setIsLoading(true);
-		console.log(formData);
-		if (!isValidForm()) return;
 
-		register(formData);
-		setIsLoading(false);
+		if (!isValidForm()) {
+			setIsLoading(false);
+			return;
+		}
+
+		try {
+			await register(formData);
+		} catch (error) {
+			console.error("Registration error:", error);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 	const handleReset = (e: React.FormEvent) => {
 		e.preventDefault();
