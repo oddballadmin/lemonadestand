@@ -11,7 +11,7 @@ import { deleteJob } from "../helper/routes";
 import "../styles/Home.css";
 
 const Home = () => {
-	const { user, refreshUser } = useUserContext(); // Initialize user as null
+	const { user, refreshUser, loading } = useUserContext(); // Initialize user as null
 	const [appliedJobs, setAppliedJobs] = useState<JobType[]>();
 	const [userCreatedJobs, setUserCreatedJobs] =
 		useState<UserCreatedJobType[]>();
@@ -41,6 +41,7 @@ const Home = () => {
 
 	return (
 		<div className="Home">
+			{loading && <p>Loading Data...</p>}
 			<h1>Welcome {user ? user.firstName : "Guest"}!</h1>
 			{user && (
 				<>

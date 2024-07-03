@@ -22,6 +22,7 @@ export const UserContext = createContext<UserContextType | undefined>(
 
 // Create a provider component
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+	const [loading, setLoading] = useState(false);
 	const [user, setUser] = useState<UserType>({
 		firstName: "",
 		lastName: "",
@@ -32,18 +33,21 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 	});
 	const fetchUser = async () => {
 		try {
+			setLoading(true);
 			const userData = await getProfile(); // Get user data
 			setUser(userData); // Set user data
 		} catch (error) {
 			console.error("Failed to fetch user:", error);
+		} finally {
+			setLoading(false);
 		}
 	};
 	useEffect(() => {
 		fetchUser();
 	}, []); // Empty dependency array to run only once on mount
 	const value = useMemo(
-		() => ({ user, setUser, refreshUser: fetchUser }),
-		[user, setUser]
+		() => ({ user, setUser, refreshUser: fetchUser, loading }),
+		[user, loading, setUser]
 	);
 	return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
