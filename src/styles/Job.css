@@ -7,9 +7,11 @@
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-between;
+		gap: 2rem;
 		& > .filter {
 			display: flex;
 			align-items: center;
+
 			gap: 1rem;
 			& > input {
 				all: unset;
@@ -20,6 +22,22 @@
 			}
 			& > ::placeholder {
 				color: var(--secondary-color);
+			}
+		}
+	}
+}
+@media (max-width: 768px) {
+	.Job {
+		& > .row {
+			& > .filter {
+				flex-flow: column nowrap;
+				width: 96%;
+				align-items: start;
+				margin: 0 auto;
+
+				& > input {
+					width: 90%;
+				}
 			}
 		}
 	}

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import JobList from "../components/Job/JobList";
 import { useUserContext } from "../hooks/useUserContext";
 import { useOptionContext } from "../hooks/useOptionContext";
 import Modal from "../components/utils/Modal";
 import "../styles/Job.css";
 import CreateJobForm from "../components/Job/CreateJobForm";
+import { JobBoardType } from "../types";
+import { getAllJobs } from "../helper/routes";
+
 const Jobs = () => {
 	const { filterText, setFilterText } = useOptionContext();
 	const { user } = useUserContext();
@@ -15,6 +18,19 @@ const Jobs = () => {
 	const [dislayModal, setDisplayModal] = React.useState(false);
 	const toggleModal = () => {
 		setDisplayModal((prevState) => !prevState);
+	};
+	const [jobs, setJobs] = useState<JobBoardType[]>([]);
+
+	const getJobsData = async () => {
+		setJobs(await getAllJobs());
+	};
+
+	useEffect(() => {
+		getJobsData();
+	}, []);
+
+	const addJob = (newJob: JobBoardType) => {
+		setJobs((prevJobs) => [newJob, ...prevJobs]);
 	};
 	if (!user) {
 		return <h2>Please log in to view this page</h2>;
@@ -29,7 +45,7 @@ const Jobs = () => {
 					</button>
 					{dislayModal && (
 						<Modal>
-							<CreateJobForm />
+							<CreateJobForm addJob={addJob} />
 						</Modal>
 					)}
 
@@ -44,7 +60,7 @@ const Jobs = () => {
 						/>
 					</div>
 				</div>
-				<JobList filterInput={filterText} />
+				<JobList filterInput={filterText} jobs={jobs} />
 			</div>
 		);
 	}

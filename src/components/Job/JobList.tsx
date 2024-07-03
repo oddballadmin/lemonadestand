@@ -1,19 +1,15 @@
-import React, { useEffect, useMemo } from "react";
-import { getAllJobs } from "../../helper/routes";
+import { useMemo } from "react";
 import { JobBoardType } from "../../types";
 import JobBoardItem from "./JobBoardItem";
 import "../../styles/JobBoardList.css";
 
-const JobList = ({ filterInput }: { filterInput: number | undefined }) => {
-	const [jobs, setJobs] = React.useState<JobBoardType[]>([]);
-	const getJobsData = async () => {
-		setJobs(await getAllJobs());
-	};
-
-	useEffect(() => {
-		getJobsData();
-	}, []);
-
+const JobList = ({
+	filterInput,
+	jobs,
+}: {
+	filterInput: number | undefined;
+	jobs: JobBoardType[];
+}) => {
 	const filteredJobs = useMemo(
 		() =>
 			jobs.filter((job: JobBoardType) => {

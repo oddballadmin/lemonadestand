@@ -76,7 +76,7 @@ const ApplyForm = ({
 					<button type="button" onClick={handleCancel}>
 						Cancel
 					</button>
-					<button type="submit" onClick={handleSubmit}>
+					<button type="submit" className="submitBtn" onClick={handleSubmit}>
 						Submit
 					</button>
 				</div>

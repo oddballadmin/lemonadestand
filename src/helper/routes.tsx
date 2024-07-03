@@ -104,7 +104,7 @@ export const createJob = async (job: CreateJobType) => {
 		console.log(res.data);
 		toast.success("Job Created successfully!");
 
-		return res;
+		return res.data;
 	} catch (err) {
 		console.error(err);
 		toast.error("Error creating job, please retry later!");

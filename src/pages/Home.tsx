@@ -8,6 +8,7 @@ import JobItemApplied from "../components/Job/JobItemApplied";
 import UserCreatedJobList from "../components/Job/UserCreatedJobList";
 import UserCreatedJobItem from "../components/Job/UserCreatedJobItem";
 import { deleteJob } from "../helper/routes";
+import "../styles/Home.css";
 
 const Home = () => {
 	const { user, refreshUser } = useUserContext(); // Initialize user as null
@@ -39,39 +40,41 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className="Home">
 			<h1>Welcome {user ? user.firstName : "Guest"}!</h1>
 			{user && (
-				<div>
+				<>
 					<p>Email: {user.email}</p>
 					<div className="birthDay">
 						<p>Birthdate: {new Date(user.birthdate).toLocaleDateString()}</p>
 					</div>
-					<div className="row">
-						<h2>Jobs you have applied to</h2>
-						{appliedJobs && appliedJobs.length > 0 ? (
-							<JobListUserApplied>
-								{appliedJobs.map((job) => (
-									<JobItemApplied job={job} />
-								))}
-							</JobListUserApplied>
-						) : (
-							<p>No Jobs Have Been Applied To</p>
-						)}
+					<div className="infoContainer">
+						<div className="row">
+							<h2>Jobs you have applied to</h2>
+							{appliedJobs && appliedJobs.length > 0 ? (
+								<JobListUserApplied>
+									{appliedJobs.map((job) => (
+										<JobItemApplied job={job} />
+									))}
+								</JobListUserApplied>
+							) : (
+								<p>No Jobs Have Been Applied To</p>
+							)}
+						</div>
+						<div className="row">
+							<h2>Jobs you have created</h2>
+							{userCreatedJobs && userCreatedJobs?.length > 0 ? (
+								<UserCreatedJobList>
+									{userCreatedJobs?.map((job) => (
+										<UserCreatedJobItem job={job} onDelete={handleDeleteJob} />
+									))}
+								</UserCreatedJobList>
+							) : (
+								<p>No Jobs Have Been Created</p>
+							)}
+						</div>
 					</div>
-					<div className="row">
-						<h2>Jobs you have created</h2>
-						{userCreatedJobs && userCreatedJobs?.length > 0 ? (
-							<UserCreatedJobList>
-								{userCreatedJobs?.map((job) => (
-									<UserCreatedJobItem job={job} onDelete={handleDeleteJob} />
-								))}
-							</UserCreatedJobList>
-						) : (
-							<p>No Jobs Have Been Created</p>
-						)}
-					</div>
-				</div>
+				</>
 			)}
 		</div>
 	);

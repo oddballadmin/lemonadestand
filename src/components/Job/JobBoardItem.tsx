@@ -51,7 +51,7 @@ const JobBoardItem = ({ job }: { job: JobBoardType }) => {
 					</div>
 					<div className="row">
 						<p>Job Price: ${job.payment}</p>
-						<button onClick={changeViewMore}>View More Info</button>
+						<button onClick={changeViewMore}>View More</button>
 					</div>
 				</>
 			)}

@@ -1,10 +1,11 @@
 import FormGroup from "../utils/FormGroup";
 import "../../styles/CreateJobForm.css";
 import { useEffect, useState } from "react";
-import { CreateJobType } from "../../types";
+import { CreateJobType, JobBoardType } from "../../types";
 import { createJob } from "../../helper/routes";
 import { useUserContext } from "../../hooks/useUserContext";
-const CreateJobForm = () => {
+
+const CreateJobForm = ({ addJob }: { addJob: (job: JobBoardType) => void }) => {
 	const { user } = useUserContext();
 	const [formData, setFormData] = useState<CreateJobType>({
 		title: "",
@@ -13,6 +14,7 @@ const CreateJobForm = () => {
 		payment: undefined,
 		creator: "",
 	});
+
 	useEffect(() => {
 		if (user) {
 			setFormData((prevState) => ({
@@ -21,6 +23,7 @@ const CreateJobForm = () => {
 			}));
 		}
 	}, [user]);
+
 	const [formErrorData, setFormErrorData] = useState({
 		title: "",
 		description: "",
@@ -33,7 +36,7 @@ const CreateJobForm = () => {
 		if (!form.title) {
 			setFormErrorData((prevState) => ({
 				...prevState,
-				title: "First name is required",
+				title: "Title is required",
 			}));
 			isValid = false;
 		} else {
@@ -51,7 +54,7 @@ const CreateJobForm = () => {
 		if (!form.zipcode) {
 			setFormErrorData((prevState) => ({
 				...prevState,
-				zipcode: "zipcode is required",
+				zipcode: "Zipcode is required",
 			}));
 			isValid = false;
 		} else {
@@ -70,23 +73,32 @@ const CreateJobForm = () => {
 		return isValid;
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		if (!isValidForm({ form: formData })) {
 			return;
 		}
-		createJob(formData);
-		handleReset();
+		try {
+			const createdJob = await createJob(formData);
+			if (createdJob) {
+				addJob(createdJob); // Update the job list
+				handleReset();
+			}
+		} catch (error) {
+			console.error("Error creating job:", error);
+		}
 	};
+
 	const handleReset = () => {
 		setFormData({
 			title: "",
 			description: "",
 			zipcode: undefined,
 			payment: undefined,
-			creator: "",
+			creator: user ? user.firstName + " " + user.lastName : "",
 		});
 	};
+
 	return (
 		<>
 			<form action="#" id="createJob" className="container CreateJobForm ">
