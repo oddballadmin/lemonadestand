@@ -10,11 +10,12 @@ const Navigation = () => {
 						Home
 					</NavLink>
 				</li>
-				<li>
-					<NavLink to="error">Error</NavLink>
-				</li>
+
 				<li>
 					<NavLink to="jobs">Jobs</NavLink>
+				</li>
+				<li>
+					<NavLink to="about">About</NavLink>
 				</li>
 			</ul>
 		</nav>

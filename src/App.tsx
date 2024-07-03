@@ -6,6 +6,7 @@ import Jobs from "./pages/Jobs";
 import Error from "./pages/Error";
 import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
+import About from "./pages/About";
 import axios from "axios";
 import Applicants from "./pages/Applicants";
 import.meta.env.VITE_NODE_ENV === "development"
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
 			{ path: "jobs/:jobId/applicants", element: <Applicants /> },
 			{ path: "login", element: <SignIn /> },
 			{ path: "register", element: <Register /> },
+			{ path: "about", element: <About /> },
 			{ path: "*", element: <Error /> }, // Optional: Catch-all route for 404
 		],
 	},
