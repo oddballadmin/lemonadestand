@@ -2,7 +2,7 @@
 	display: flex;
 	position: absolute;
 	min-width: 40rem;
-	background: var(--background-grad);
+	background: var(--background-grad-form);
 	border: 2px solid var(--secondary-color);
 	border-radius: 10px;
 	top: 100%;
@@ -10,10 +10,12 @@
 
 	z-index: 2;
 	left: 0;
+	z-index: 99;
 }
 
 @media screen and (max-width: 768px) {
 	.Modal {
 		min-width: 100%;
+		top: 20%;
 	}
 }

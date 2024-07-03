@@ -14,23 +14,29 @@ html,
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	--accent-color: rgba(96, 125, 139, 0.95);
+	--accent-color: rgba(50, 66, 74, 0.95);
 	--border-color: rgba(96, 125, 139);
 	--dark-blue: rgba(0, 179, 255, 0.323);
 	--dark-blue-hover: rgba(0, 179, 255, 0.823);
 	--nav-back: #1088d3;
 	--background-grad: linear-gradient(
-		115deg,
-		rgba(75, 8, 109, 0.8) 75%,
-		rgba(172, 192, 254, 0.8)
+		rgba(75, 8, 109, 0.9),
+		rgba(172, 192, 254, 0.45)
 	);
+	--background-grad-form: linear-gradient(rgb(75, 8, 109), rgb(116, 128, 161));
 }
 
-body,
-html {
+body {
 	height: 100%;
 	overflow-x: hidden;
 	font-weight: 600;
+	background: var(--background-grad);
+
+	background-attachment: fixed;
+	background-size: cover;
+}
+html {
+	min-height: 100%;
 }
 
 button {
@@ -135,13 +141,7 @@ textarea {
 
 		color: var(--secondary-color);
 	}
-	html {
-		--background-grad: linear-gradient(
-			115deg,
-			rgba(75, 8, 109, 0.85) 55%,
-			rgba(172, 192, 254, 0.85)
-		);
-	}
+
 	a {
 		color: var(--primary-color);
 		text-decoration: underline;
@@ -172,30 +172,23 @@ textarea {
 
 		color: var(--secondary-color);
 	}
-	html {
-		background: linear-gradient(
-			145deg,
-			rgba(75, 8, 109, 0.95),
-			rgba(172, 192, 254, 0.65)
-		);
 
-		a {
-			color: var(--secondary-color);
-			text-decoration: underline;
-		}
-		a:visited {
-			color: var(--secondary-color);
-		}
-		a:hover {
-			text-decoration: none;
-		}
+	a {
+		color: var(--secondary-color);
+		text-decoration: underline;
 	}
-	@media screen and (max-width: 768px) {
-		body {
-			font-weight: 400;
-		}
-		.container {
-			padding: 0 0.25rem;
-		}
+	a:visited {
+		color: var(--secondary-color);
+	}
+	a:hover {
+		text-decoration: none;
+	}
+}
+@media screen and (max-width: 768px) {
+	body {
+		font-weight: 400;
+	}
+	.container {
+		padding: 0 0.25rem;
 	}
 }
