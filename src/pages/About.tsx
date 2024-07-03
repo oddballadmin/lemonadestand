@@ -3,6 +3,8 @@ const About = () => {
 		<div>
 			<h1>About</h1>
 			<p>
+				**TO USE THIS APP YOU MUST HAVE COOKIES ENABLED**
+				<br />
 				This application was built to allow users to find local jobs within a
 				certain radius of their location.
 				<br />
