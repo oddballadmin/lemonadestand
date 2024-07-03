@@ -1,16 +1,16 @@
 import "../../styles/JobItemApplied.css";
 import { JobType } from "../../types";
-import { FaTrash } from "react-icons/fa";
+// import { FaTrash } from "react-icons/fa";
 
 const JobItemApplied = ({ job }: { job: JobType }) => {
 	console.log(new Date(job.dateApplied).toLocaleDateString());
 	return (
 		<li key={job._id} className="JobItemApplied">
-			<div className="editBar">
+			{/* <div className="editBar">
 				<button className="delete" type="button" title="Delete">
 					<FaTrash aria-label="Delete" />
 				</button>
-			</div>
+			</div> */}
 			<div className="jobItemContent">
 				<h4>{job.title}</h4>
 				<p>{job.creator}</p>
