@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "./../components/utils/Form";
 import "../styles/Form.css";
 import FormGroup from "./../components/utils/FormGroup";
 import { register } from "../helper/routes";
 const Register = () => {
-	const [formData, setFormData] = React.useState({
+	const [isLoading, setIsLoading] = useState(false);
+	const [formData, setFormData] = useState({
 		firstName: "",
 		lastName: "",
 		birthdate: "",
@@ -14,7 +15,7 @@ const Register = () => {
 		password: "",
 		password2: "",
 	});
-	const [formError, setFormError] = React.useState({
+	const [formError, setFormError] = useState({
 		firstNameError: "",
 		lastNameError: "",
 		birthdateError: "",
@@ -102,9 +103,12 @@ const Register = () => {
 	};
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+		setIsLoading(true);
 		console.log(formData);
 		if (!isValidForm()) return;
+
 		register(formData);
+		setIsLoading(false);
 	};
 	const handleReset = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -259,6 +263,7 @@ const Register = () => {
 						Reset
 					</button>
 				</div>
+				<div className="loading">{isLoading && <span>Loading...</span>}</div>
 			</Form>
 		</div>
 	);

@@ -7,6 +7,8 @@ import { useUserContext } from "../hooks/useUserContext";
 import { Navigate } from "react-router-dom";
 const SignIn = () => {
 	const { refreshUser } = useUserContext();
+	const [isLoading, setIsLoading] = useState(false);
+
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -18,10 +20,12 @@ const SignIn = () => {
 	});
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+		setIsLoading(true);
 		login(formData)
 			.then(() => {
 				setRedirect(true);
 				refreshUser && refreshUser();
+				setIsLoading(false);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -84,6 +88,7 @@ const SignIn = () => {
 					</button>
 				</div>
 			</Form>
+			<div className="loading">{isLoading && <span>Loading...</span>}</div>
 		</div>
 	);
 };
