@@ -9,7 +9,7 @@ html,
 :root {
 	font-family: "roboto", "helvetica", "arial", sans-serif;
 	line-height: 1.5;
-	/* color-scheme: light dark; */
+	color-scheme: light dark;
 
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -24,23 +24,8 @@ html,
 		rgba(172, 192, 254, 0.45)
 	);
 	--background-grad-form: linear-gradient(rgb(75, 8, 109), rgb(116, 128, 161));
-	--primary-color: #242424;
-
-	--secondary-color: #cececefb;
-
-	color: var(--secondary-color);
 }
 
-a {
-	color: var(--secondary-color);
-	text-decoration: underline;
-}
-a:visited {
-	color: var(--secondary-color);
-}
-a:hover {
-	text-decoration: none;
-}
 body {
 	height: 100%;
 	overflow-x: hidden;
@@ -148,38 +133,7 @@ textarea {
 	border-radius: 5px;
 	padding: 0.25rem 0.5rem;
 } */
-/* @media (prefers-color-scheme: light) {
-	:root {
-		--secondary-color: #242424;
-
-		--primary-color: #d5d4d4fb;
-
-		color: var(--secondary-color);
-	}
-
-	a {
-		color: var(--primary-color);
-		text-decoration: underline;
-	}
-	.authLinks a {
-		color: var(--secondary-color);
-	}
-	a:visited {
-		color: var(--secondary-color);
-	}
-	a:hover {
-		text-decoration: none;
-	}
-}
-input,
-textarea {
-	all: unset;
-	display: flex;
-	border: 2px solid var(--secondary-color);
-	border-radius: 5px;
-	padding: 0.25rem 0.5rem;
-} */
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
 	:root {
 		--primary-color: #242424;
 
@@ -198,7 +152,35 @@ textarea {
 	a:hover {
 		text-decoration: none;
 	}
-} */
+}
+input,
+textarea {
+	all: unset;
+	display: flex;
+	border: 2px solid var(--secondary-color);
+	border-radius: 5px;
+	padding: 0.25rem 0.5rem;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--primary-color: #242424;
+
+		--secondary-color: #cececefb;
+
+		color: var(--secondary-color);
+	}
+
+	a {
+		color: var(--secondary-color);
+		text-decoration: underline;
+	}
+	a:visited {
+		color: var(--secondary-color);
+	}
+	a:hover {
+		text-decoration: none;
+	}
+}
 @media screen and (max-width: 768px) {
 	body {
 		font-weight: 400;
