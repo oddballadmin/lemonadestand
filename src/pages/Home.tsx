@@ -44,13 +44,11 @@ const Home = () => {
 
 	useEffect(() => {
 		setNavToggle(false);
-		if (user) {
-			setLoading(true);
-			refreshUser && refreshUser();
-			getAppliedJobsData();
-			getUserCreatedJobsData();
-			setLoading(false);
-		}
+		setLoading(true);
+		refreshUser && refreshUser();
+		getAppliedJobsData();
+		getUserCreatedJobsData();
+		setLoading(false);
 	}, []);
 
 	return (
@@ -64,7 +62,7 @@ const Home = () => {
 					<div className="infoContainer">
 						<div className="row">
 							<h2>Jobs you have applied to</h2>
-							{appliedJobs.length > 0 ? (
+							{appliedJobs && appliedJobs.length > 0 ? (
 								<JobListUserApplied>
 									{appliedJobs.map((job) => (
 										<JobItemApplied job={job} key={job._id} />
@@ -76,7 +74,7 @@ const Home = () => {
 						</div>
 						<div className="row">
 							<h2>Jobs you have created</h2>
-							{userCreatedJobs.length > 0 ? (
+							{userCreatedJobs && userCreatedJobs.length > 0 ? (
 								<UserCreatedJobList>
 									{userCreatedJobs.map((job) => (
 										<UserCreatedJobItem
